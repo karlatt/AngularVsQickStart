@@ -18,6 +18,7 @@ import { Utilities } from './utilities';
 type UserConfiguration = {
     language: string,
     homeUrl: string,
+    orientation: string,
     theme: string,
     showDashboardStatistics: boolean,
     showDashboardNotifications: boolean,
@@ -37,7 +38,8 @@ export class ConfigurationService {
     //***Specify default configurations here***
     public static readonly defaultLanguage: string = "en";
     public static readonly defaultHomeUrl: string = "/";
-    public static readonly defaultTheme: string = "Default";
+    public static readonly defaultOrientation: string = "portrait";
+    public static readonly defaultTheme: string = "default";
     public static readonly defaultShowDashboardStatistics: boolean = true;
     public static readonly defaultShowDashboardNotifications: boolean = true;
     public static readonly defaultShowDashboardTodo: boolean = false;
@@ -46,6 +48,7 @@ export class ConfigurationService {
 
     private _language: string = null;
     private _homeUrl: string = null;
+    private _orientation: string = null;
     private _theme: string = null;
     private _showDashboardStatistics: boolean = null;
     private _showDashboardNotifications: boolean = null;
@@ -71,6 +74,9 @@ export class ConfigurationService {
 
         if (this.localStorage.exists(DBkeys.HOME_URL))
             this._homeUrl = this.localStorage.getDataObject<string>(DBkeys.HOME_URL);
+
+        if (this.localStorage.exists(DBkeys.ORIENTATION))
+            this._orientation = this.localStorage.getDataObject<string>(DBkeys.ORIENTATION);
 
         if (this.localStorage.exists(DBkeys.THEME))
             this._theme = this.localStorage.getDataObject<string>(DBkeys.THEME);
@@ -109,6 +115,9 @@ export class ConfigurationService {
         if (importValue.homeUrl != null)
             this.homeUrl = importValue.homeUrl;
 
+        if (importValue.orientation != null)
+            this._orientation = importValue.orientation;
+
         if (importValue.theme != null)
             this.theme = importValue.theme;
 
@@ -132,6 +141,7 @@ export class ConfigurationService {
             {
                 language: changesOnly ? this._language : this.language,
                 homeUrl: changesOnly ? this._homeUrl : this.homeUrl,
+                orientation: changesOnly ? this._orientation : this._orientation,
                 theme: changesOnly ? this._theme : this.theme,
                 showDashboardStatistics: changesOnly ? this._showDashboardStatistics : this.showDashboardStatistics,
                 showDashboardNotifications: changesOnly ? this._showDashboardNotifications : this.showDashboardNotifications,
@@ -146,6 +156,7 @@ export class ConfigurationService {
     public clearLocalChanges() {
         this._language = null;
         this._homeUrl = null;
+        this._orientation = null;
         this._theme = null;
         this._showDashboardStatistics = null;
         this._showDashboardNotifications = null;
@@ -154,6 +165,7 @@ export class ConfigurationService {
 
         this.localStorage.deleteData(DBkeys.LANGUAGE);
         this.localStorage.deleteData(DBkeys.HOME_URL);
+        this.localStorage.deleteData(DBkeys.ORIENTATION);
         this.localStorage.deleteData(DBkeys.THEME);
         this.localStorage.deleteData(DBkeys.SHOW_DASHBOARD_STATISTICS);
         this.localStorage.deleteData(DBkeys.SHOW_DASHBOARD_NOTIFICATIONS);
@@ -200,6 +212,18 @@ export class ConfigurationService {
             return this._homeUrl;
 
         return ConfigurationService.defaultHomeUrl;
+    }
+
+
+    set orientation(value: string) {
+        this._orientation = value;
+        this.saveToLocalStore(value, DBkeys.ORIENTATION);
+    }
+    get orientation() {
+        if (this._orientation != null)
+            return this._orientation;
+
+        return ConfigurationService.defaultOrientation;
     }
 
 

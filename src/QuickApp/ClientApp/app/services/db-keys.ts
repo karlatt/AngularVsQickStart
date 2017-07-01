@@ -23,6 +23,7 @@ export class DBkeys {
 
     public static readonly LANGUAGE = "language";
     public static readonly HOME_URL = "home_url";
+    public static readonly ORIENTATION = "orientation";
     public static readonly THEME = "theme";
     public static readonly SHOW_DASHBOARD_STATISTICS = "show_dashboard_statistics";
     public static readonly SHOW_DASHBOARD_NOTIFICATIONS = "show_dashboard_notifications";

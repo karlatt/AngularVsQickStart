@@ -34,6 +34,9 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
     @ViewChild("homePageSelector")
     homePageSelector: BootstrapSelectDirective;
 
+    @ViewChild("orientationSelector")
+    orientationSelector: BootstrapSelectDirective;
+
     constructor(private alertService: AlertService, private configurations: ConfigurationService, private translationService: AppTranslationService, private accountService: AccountService) {
     }
 
@@ -44,6 +47,7 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
             setTimeout(() => {
                 this.languageSelector.refresh();
                 this.homePageSelector.refresh();
+                this.orientationSelector.refresh();
                 this.themeSelectorToggle = true;
             });
         });

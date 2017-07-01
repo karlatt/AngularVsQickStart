@@ -62,15 +62,35 @@
     </div>
 
     <div class="form-group">
+        <label for="orientation" class="col-sm-3 control-label">{{'preferences.Orientation' | translate}} </label>
+        <div class="col-sm-4">
+            <select id="orientation" [(ngModel)]="configurations.orientation" #orientationSelector="bootstrap-select" bootstrapSelect class="selectpicker form-control">
+                <option data-icon="fa fa-file-o" data-subtext="(Default)" value="portrait">{{'preferences.Portrait' | translate}}</option>
+                <option data-icon="fa fa-file-o fa-rotate-90" value="landscape">{{'preferences.Landscape' | translate}}</option>
+            </select>
+        </div>
+        <div class="col-sm-5">
+            <p class="form-control-static text-muted small">{{'preferences.OrientationHint' | translate}}</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="separator-hr" />
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="defaultTheme" class="col-sm-3 control-label">{{'preferences.Theme' | translate}} </label>
         <div *ngIf="themeSelectorToggle" class="col-sm-4">
             <select id="defaultTheme" [(ngModel)]="configurations.theme" bootstrapSelect class="selectpicker form-control">
-                <option attr.data-content="{{'preferences.DefaultColor' | translate}}">Default</option>
-                <option attr.data-content="{{'preferences.RedColor' | translate}}">Red</option>
-                <option attr.data-content="{{'preferences.OrangeColor' | translate}}">Orange</option>
-                <option attr.data-content="{{'preferences.GreenColor' | translate}}">Green</option>
-                <option attr.data-content="{{'preferences.GrayColor' | translate}}">Gray</option>
-                <option attr.data-content="{{'preferences.BlackColor' | translate}}">Black</option>
+                <option attr.data-content="{{'preferences.DefaultColor' | translate}}">default</option>
+                <option attr.data-content="{{'preferences.RedColor' | translate}}">red</option>
+                <option attr.data-content="{{'preferences.OrangeColor' | translate}}">orange</option>
+                <option attr.data-content="{{'preferences.GreenColor' | translate}}">green</option>
+                <option attr.data-content="{{'preferences.GrayColor' | translate}}">gray</option>
+                <option attr.data-content="{{'preferences.BlackColor' | translate}}">black</option>
             </select>
         </div>
         <div class="col-sm-5">

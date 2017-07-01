@@ -8,6 +8,8 @@
 
 import { Component } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
+import { ConfigurationService } from '../../services/configuration.service';
+
 
 @Component({
     selector: 'orders',
@@ -16,4 +18,6 @@ import { fadeInOut } from '../../services/animations';
     animations: [fadeInOut]
 })
 export class OrdersComponent {
+    constructor(private configurations: ConfigurationService) {
+    }
 }

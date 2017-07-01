@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { fadeInOut } from '../../services/animations';
+import { ConfigurationService } from '../../services/configuration.service';
 import { BootstrapTabDirective } from "../../directives/bootstrap-tab.directive";
 import { AppTranslationService } from "../../services/app-translation.service";
 import { AccountService, RolesChangedEventArg } from "../../services/account.service";
@@ -46,7 +47,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     tab: BootstrapTabDirective;
 
 
-    constructor(private route: ActivatedRoute, private translationService: AppTranslationService, private accountService: AccountService) {
+    constructor(private route: ActivatedRoute, private translationService: AppTranslationService, private configurations: ConfigurationService,
+        private accountService: AccountService) {
     }
 
 

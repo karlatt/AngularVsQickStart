@@ -53,15 +53,15 @@
     cursor: pointer;
 }
 
-    .navbar.app-component .nav > li > a {
-        color: white;
-        font-weight: bold;
-        -webkit-text-shadow: none;
-        text-shadow: none;
-        height: 30px;
-        padding-top: 6px;
-        padding-bottom: 0px;
-    }
+#app_container:not(.landscape) .navbar.app-component .nav > li > a {
+    color: white;
+    font-weight: bold;
+    -webkit-text-shadow: none;
+    text-shadow: none;
+    height: 30px;
+    padding-top: 6px;
+    padding-bottom: 0px;
+}
 
 
 .navbar-fixed-top.app-component .navbar-inner.app-component,
@@ -71,7 +71,7 @@
     box-shadow: 0 1px 00px rgba(0, 0, 0, 0);
 }
 
-.nav.navBarPadding.app-component {
+#app_container:not(.landscape) .nav.navBarPadding.app-component {
     margin-left: 5px;
     margin-top: 10px;
 }
@@ -202,4 +202,73 @@ a.user-name.app-component {
 .prebootStep.app-component {
     opacity: 0;
     transition: .5s ease-in-out all;
+}
+
+
+
+
+
+
+/* Keep the nav menu independent of scrolling and on top of other items */
+.landscape .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    /* On small screens, convert the nav menu to a vertical sidebar */
+
+    #mainContent.app-component {
+        padding-top: 0;
+    }
+
+    .landscape .main-nav {
+        height: 100%;
+        width: calc(25% - 20px);
+    }
+
+    .landscape .navbar.app-component {
+        border-radius: 0px;
+        border-width: 0px;
+        height: 100%;
+    }
+
+    .landscape .navbar-header.app-component {
+        float: none;
+    }
+
+    .landscape .navbar-collapse.app-component {
+        border-top: 1px solid #fff;
+        padding: 0px;
+    }
+
+    .landscape .navbar.app-component ul {
+        float: none;
+    }
+
+    .landscape .navbar.app-component li {
+        float: none;
+        font-size: 15px;
+        margin: 6px;
+    }
+
+        .landscape .navbar.app-component li a {
+            padding: 10px 16px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            -webkit-text-shadow: none;
+            text-shadow: none;
+        }
+
+    .landscape .navbar.app-component a {
+        /* If a menu item's text is too long, truncate it */
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
